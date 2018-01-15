@@ -1,0 +1,293 @@
+% !TEX encoding = UTF-8 Unicode
+%% ---------------------------------------------------------------------------
+%% Copyright 2015 Matthias Vogelgesang and the LaTeX community. A full list of
+%% contributors can be found at
+%%
+%%     https://github.com/matze/mtheme/graphs/contributors
+%%
+%% and the original template was based on the HSRM theme by Benjamin Weiss.
+%%
+%% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+%% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+%% ---------------------------------------------------------------------------
+
+\documentclass{ltxdoc}
+%\OnlyDescription
+
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{xspace}
+\onehalfspacing
+\usepackage{kotex}
+\usepackage{etoolbox}
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\usepackage{makecell}
+
+\ifboolexpr{bool {xetex} or bool {luatex}}{
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+
+  \newcounter{fontsnotfound}
+  \newcommand{\checkfont}[1]{%
+    \suppressfontnotfounderror=1%
+    \font\x = "#1" at 10pt
+    \selectfont
+    \ifx\x\nullfont%
+      \stepcounter{fontsnotfound}%
+    \fi%
+    \suppressfontnotfounderror=0%
+  }
+
+  \newcommand{\iffontsavailable}[3]{%
+    \setcounter{fontsnotfound}{0}%
+    \expandafter\forcsvlist\expandafter%
+    \checkfont\expandafter{#1}%
+    \ifnum\value{fontsnotfound}=0%
+      #2%
+    \else%
+      #3%
+    \fi%
+  }
+  \iffontsavailable{Fira Sans Light,%
+                Fira Sans Light Italic,%
+                Fira Sans,%
+                Fira Sans Italic}{%
+    \setmainfont[BoldFont={Fira Sans}]{Fira Sans Light}%
+  }{%
+    \iffontsavailable{Fira Sans Light OT,%
+                  Fira Sans Light Italic OT,%
+                  Fira Sans OT,%
+                  Fira Sans Italic OT}{%
+      \setmainfont[BoldFont={Fira Sans OT}]{Fira Sans Light OT}%
+    }{%
+      \typeout{%
+        Could not find Fira Sans fonts. Creating documentation%
+        with standard fonts.%
+      }
+    }
+  }
+  \iffontsavailable{Fira Mono, Fira Mono Bold}{%
+    \setmonofont{Fira Mono}%
+  }{%
+    \iffontsavailable{Fira Mono OT, Fira Mono Bold OT}{%
+      \setmonofont{Fira Mono OT}%
+    }{%
+      \typeout{%
+        Could not find Fira Sans fonts. Creating documentation%
+        with standard monospaced fonts.%
+      }
+    }
+  }
+}{
+  \typeout{%
+    You need to compile with XeLaTeX or LuaLaTeX to use the Fira fonts.%
+  }
+}
+
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep}
+\setlist[enumerate]{noitemsep}
+
+\usepackage{xcolor}
+\definecolor{mDarkBrown}{HTML}{604c38}
+\definecolor{mDarkTeal}{HTML}{23373b}
+\definecolor{mLightBrown}{HTML}{EB811B}
+\definecolor{mLightGreen}{HTML}{14B03D}
+\definecolor{mBackground}{HTML}{FFFFFF}
+
+\usepackage{listings}
+\lstset{%
+  language=[LaTeX]{TeX},
+  basicstyle=\ttfamily,
+  keywordstyle=\color{mLightBrown}\bfseries,
+  commentstyle=\color{mLightGreen},
+  stringstyle=\color{mLightGreen},
+  backgroundcolor=\color{mBackground},
+  numbers=none,
+  numberstyle=\tiny\ttfamily,
+  stepnumber=2,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=none,
+  framerule=1pt,
+  tabsize=2,
+  rulesep=5em,
+  captionpos=b,
+  breaklines=true,
+  breakatwhitespace=false,
+  framexleftmargin=0em,
+  framexrightmargin=0em,
+  xleftmargin=0em,
+  xrightmargin=0em,
+  aboveskip=1em,
+  belowskip=1em,
+  morekeywords={usetheme,institute,maketitle,@metropolis@titleformat,%
+                plain,setbeamercolor,metroset,setsansfont,setmonofont},
+}
+\lstMakeShortInline|
+\usepackage{metalogo}
+
+\usepackage[colorlinks=true,
+            linkcolor=mLightBrown,
+            menucolor=mLightBrown,
+            pagecolor=mLightBrown,
+            urlcolor=mLightBrown]{hyperref}
+
+\newcommand{\DescribeOption}[4]{
+  \DescribeMacro{#1}
+  \begin{minipage}[t]{\textwidth}
+    \textit{\textbf{\textcolor{mLightGreen}{#2}}}\dotfill\,#3\par
+    \begingroup
+    \vspace{0.5em}#4\par
+    \endgroup
+  \end{minipage}
+}
+
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\usepackage{readprov}
+\ReadPackageInfos{beamerthememetropolis}
+
+\title{오픈소스 프로젝트 과제}
+\author{김민중 \\ \url{kl4314@likelion.org}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section{Github History}
+\subsection{기능 추가, 삭제 commit}
+\subsubsection{Fork}
+\begin{description}
+\item anuragrana/elastic-search-django repositories 를 Fork
+
+\item django와 elasticsearch와 연동
+
+\item 데이터 베이스 모델링
+
+\item 데이터가 저장될 때 트리거를 주는 장고의 signal 기능
+
+\item 데이터베이스의 데이터가 어떻게 엘라스틱 서치로 이동하는지 알아보는 단계의 코드
+
+\end{description}
+
+\subsubsection{장고를 이용한 간단한 웹 사이트 제작}
+\begin{description}
+
+\item 간단한 영화 검색 사이트를 만들기 위해 네이버 API를 이용하여 웹 사이트 정보를 받아오는 코드 작성
+\item 영화 정보를 담을 데이터베이스 모델링
+\item 영화 정보 데이터베이스 추가시 트리거 작성
+\item 간단한 영화 검색 사이트 화면 html 코드 작성
+
+\end{description}
+
+\subsubsection{기본 환경 설정 설명}
+\begin{description}
+
+\item 이 프로젝트를 작동하기 위한 기본적인 환경 설정 및 설치 파일 README.md 파일에 작성
+
+\end{description}
+
+\subsubsection{부트스트랩}
+\begin{description}
+
+\item 웹 사이트의 기본적인 구조를 위해 장고와 부트스트랩 연동
+
+\end{description}
+
+
+\subsubsection{본격적인 모델링}
+\begin{description}
+
+\item 본격적으로 데이터 분석을 위한 모델링
+\item 필요하지 않는 필드 스키마에서 제거
+
+\end{description}
+
+
+\subsubsection{검색 api 추가}
+\begin{description}
+
+\item 여러개의 데이터로 분석해 보기위해 책과 쇼핑 api 추가 
+\item 기존 최초로 실험용 코드 삭제
+
+
+\end{description}
+
+
+\subsubsection{회원가입, 로그인}
+\begin{description}
+
+\item - 연령 별, 나이 별 소비자 분석을 위해 User 모델링 및 회원가입, 로그인 기능 추가 
+
+\end{description}
+
+\subsubsection{불필요한 기능 제거}
+\begin{description}
+
+\item 주제와 맞지 않다고 생각하여 영화, 책 검색 api제거
+\item html 파일 제거
+
+\end{description}
+
+\newpage
+
+\subsection{오류 수정 commit}
+
+\subsubsection{세션 오류}
+\begin{description}
+
+\item 로그인 세션이 유지가 되지 않던오류 수정
+
+\end{description}
+
+\subsubsection{date 오류}
+\begin{description}
+
+\item 각 각의 모델에 날짜 데이터가 들어가지 않는 오류 수정
+\item 영화 데이터가 데이터 베이스로 갈 때 인덱스 문제로 생기는 오류 수정
+
+\end{description}
+
+\subsubsection{버전 오류}
+\begin{description}
+
+\item 데이터가 엘라스틱서치에서 키바나 넘어갈 때 시간 데이터가 뒤죽박죽으로 들어가는 버그 버전이 변경으로 오류 해결 
+\item 이 사실 README.md 파일에 버전에 관항 내용 수정
+
+
+\end{description}
+
+\subsubsection{데이터 삽입 오류}
+\begin{description}
+
+\item 검색된 키워드 데이터 베이스에 회원의 성별, 나이가 들어가지 않던 오류 수정
+\item 최근 검색어에 데이터 들어가지 않던 오류 수정
+
+\end{description}
+
+\subsubsection{전역 변수 오류}
+\begin{description}
+
+\item 전역 변수를 사용함으로써 발생하는 충돌을 전역 변수 삭제 후 다른 방법으로 해결 
+
+\end{description}
+
+\newpage
+
+\section{리퀘스트 요청}
+
+\begin{description}
+
+\item 원래 코드를 작성한 개발자와의 소통을 하고 의견을 듣기 위해 리퀘스트를 요청한 상태 입니다.
+
+
+\end{description}
+
+\end{document}

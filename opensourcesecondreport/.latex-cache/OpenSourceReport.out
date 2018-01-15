@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Github\040History}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{기능 추가, 삭제 commit}{section.1}% 2
+\BOOKMARK [3][-]{subsubsection.1.1.1}{Fork}{subsection.1.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.1.2}{장고를 이용한 간단한 웹 사이트 제작}{subsection.1.1}% 4
+\BOOKMARK [3][-]{subsubsection.1.1.3}{기본 환경 설정 설명}{subsection.1.1}% 5
+\BOOKMARK [3][-]{subsubsection.1.1.4}{부트스트랩}{subsection.1.1}% 6
+\BOOKMARK [3][-]{subsubsection.1.1.5}{본격적인 모델링}{subsection.1.1}% 7
+\BOOKMARK [3][-]{subsubsection.1.1.6}{검색 api 추가}{subsection.1.1}% 8
+\BOOKMARK [3][-]{subsubsection.1.1.7}{회원가입, 로그인}{subsection.1.1}% 9
+\BOOKMARK [3][-]{subsubsection.1.1.8}{불필요한 기능 제거}{subsection.1.1}% 10
+\BOOKMARK [2][-]{subsection.1.2}{오류 수정 commit}{section.1}% 11
+\BOOKMARK [3][-]{subsubsection.1.2.1}{세션 오류}{subsection.1.2}% 12
+\BOOKMARK [3][-]{subsubsection.1.2.2}{date 오류}{subsection.1.2}% 13
+\BOOKMARK [3][-]{subsubsection.1.2.3}{버전 오류}{subsection.1.2}% 14
+\BOOKMARK [3][-]{subsubsection.1.2.4}{데이터 삽입 오류}{subsection.1.2}% 15
+\BOOKMARK [3][-]{subsubsection.1.2.5}{전역 변수 오류}{subsection.1.2}% 16
+\BOOKMARK [1][-]{section.2}{리퀘스트 요청}{}% 17
